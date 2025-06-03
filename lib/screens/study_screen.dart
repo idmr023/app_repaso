@@ -55,9 +55,20 @@ class _StudyScreenState extends State<StudyScreen> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _nextCard,
-        child: const Icon(Icons.arrow_forward),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          FloatingActionButton(
+            heroTag: 'back',
+            onPressed: () => Navigator.pop(context),
+            child: const Icon(Icons.arrow_back),
+          ),
+          FloatingActionButton(
+            heroTag: 'next',
+            onPressed: _nextCard,
+            child: const Icon(Icons.arrow_forward),
+          ),
+        ],
       ),
     );
   }

@@ -7,6 +7,8 @@ void main() {
 }
 
 class ImportadorDeTarjetas extends StatefulWidget {
+  const ImportadorDeTarjetas({super.key});
+
   @override
   _ImportadorDeTarjetasState createState() => _ImportadorDeTarjetasState();
 }

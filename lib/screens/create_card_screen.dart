@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import '../models/flashcard.dart';
 
 class CreateCardScreen extends StatefulWidget {
-  const CreateCardScreen({super.key});
+  final Flashcard? editCard;
+
+  const CreateCardScreen({super.key, this.editCard});
 
   @override
   State<CreateCardScreen> createState() => _CreateCardScreenState();

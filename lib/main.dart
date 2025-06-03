@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:app_repaso/screens/home_screen.dart';
-import 'models/flashcard.dart';
 
 void main() {
   runApp(const MyApp());
