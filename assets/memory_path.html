@@ -1,0 +1,37 @@
+import 'package:flutter/material.dart';
+import 'package:webview_flutter/webview_flutter.dart';
+import 'dart:convert';
+
+class MemoryPathGame extends StatefulWidget {
+  @override
+  _MemoryPathGameState createState() => _MemoryPathGameState();
+}
+
+class _MemoryPathGameState extends State<MemoryPathGame> {
+  late WebViewController _controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Memory Path - Juego de Memoria'),
+      ),
+      body: WebView(
+        onWebViewCreated: (WebViewController webViewController) async {
+          _controller = webViewController;
+
+          // Carga el archivo HTML local
+          String fileHtmlContents = await DefaultAssetBundle.of(context)
+              .loadString('assets/memory_path.html');
+          
+          _controller.loadUrl(Uri.dataFromString(
+            fileHtmlContents,
+            mimeType: 'text/html',
+            encoding: Encoding.getByName('utf-8')
+          ).toString());
+        },
+        javascriptMode: JavascriptMode.unrestricted,
+      ),
+    );
+  }
+}
