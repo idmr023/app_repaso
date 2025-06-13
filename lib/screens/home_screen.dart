@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import '../models/flashcard.dart';
 import 'create_card_screen.dart';
 import 'study_screen.dart';
-import 'webview_screen.dart';
+import 'path_explorer_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   final List<Flashcard> flashcards;
@@ -18,7 +18,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 final StudyStats _studyStats = StudyStats();
-
 
 class _HomeScreenState extends State<HomeScreen> {
   String _searchQuery = '';
@@ -39,9 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final card = widget.flashcards[index];
     final editedCard = await Navigator.push<Flashcard>(
       context,
-      MaterialPageRoute(
-        builder: (_) => CreateCardScreen(editCard: card),
-      ),
+      MaterialPageRoute(builder: (_) => CreateCardScreen(editCard: card)),
     );
     if (editedCard != null) {
       setState(() {
@@ -53,15 +50,17 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final filteredCards = widget.flashcards
-        .where((card) =>
-            card.question.toLowerCase().contains(_searchQuery.toLowerCase()) ||
-            card.answer.toLowerCase().contains(_searchQuery.toLowerCase()))
+        .where(
+          (card) =>
+              card.question.toLowerCase().contains(
+                _searchQuery.toLowerCase(),
+              ) ||
+              card.answer.toLowerCase().contains(_searchQuery.toLowerCase()),
+        )
         .toList();
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Mis Flashcards'),
-      ),
+      appBar: AppBar(title: const Text('Mis Flashcards')),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -112,102 +111,97 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       floatingActionButton: Column(
-  mainAxisAlignment: MainAxisAlignment.end,
-  children: [
-    FloatingActionButton.extended(
-      label: const Text('Estudiar'),
-      icon: const Icon(Icons.school),
-      onPressed: () {
-        showModalBottomSheet(
-          context: context,
-          builder: (context) {
-            return Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ListTile(
-                  leading: Icon(Icons.quiz),
-                  title: Text('Modo Quiz'),
-                  onTap: () {
-                    Navigator.pop(context);
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => QuizScreen(flashcards: widget.flashcards),
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton.extended(
+            label: const Text('Estudiar'),
+            icon: const Icon(Icons.school),
+            onPressed: () {
+              showModalBottomSheet(
+                context: context,
+                builder: (context) {
+                  return Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      ListTile(
+                        leading: Icon(Icons.quiz),
+                        title: Text('Modo Quiz'),
+                        onTap: () {
+                          Navigator.pop(context);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) =>
+                                  QuizScreen(flashcards: widget.flashcards),
+                            ),
+                          );
+                        },
                       ),
-                    );
-                  },
-                ),
-                ListTile(
-                  leading: const Icon(Icons.map),
-                  title: const Text('Explorar el Camino'),
-                  onTap: () {
-                    Navigator.pop(context);
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => const WebViewScreen(),
+                      ListTile(
+                        leading: const Icon(Icons.map),
+                        title: const Text('Explorar el Camino'),
+                        onTap: () {
+                          Navigator.pop(context);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const PathExplorerScreen(),
+                            ),
+                          );
+                        },
                       ),
-                    );
-                  },
-                ),
-              ],
-            );
-          },
-        );
-      },
-    ),
-    const SizedBox(height: 10),
-    FloatingActionButton.extended(
-      label: const Text('Importar'),
-      icon: const Icon(Icons.upload_file),
-      onPressed: () async {
-        final importedCards = await Navigator.push<List<Flashcard>>(
-          context,
-          MaterialPageRoute(
-            builder: (_) => const ImportadorDeTarjetas(),
+                    ],
+                  );
+                },
+              );
+            },
           ),
-        );
-        if (importedCards != null && importedCards.isNotEmpty) {
-          setState(() {
-            widget.flashcards.addAll(importedCards);
-          });
-        }
-      },
-    ),
-    const SizedBox(height: 10),
-    FloatingActionButton.extended(
-      label: const Text('Agregar'),
-      icon: const Icon(Icons.add),
-      onPressed: () async {
-        final newCards = await Navigator.push<List<Flashcard>>(
-          context,
-          MaterialPageRoute(builder: (_) => const CreateCardScreen()),
-        );
-        if (newCards != null && newCards.isNotEmpty) {
-          setState(() {
-            widget.flashcards.addAll(newCards);
-          });
-        }
-      },
-    ),
-FloatingActionButton.extended(
-  label: const Text('Estadísticas'),
-  icon: const Icon(Icons.bar_chart),
-  onPressed: () {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (_) => StatisticsScreen(stats: _studyStats),
+          const SizedBox(height: 10),
+          FloatingActionButton.extended(
+            label: const Text('Importar'),
+            icon: const Icon(Icons.upload_file),
+            onPressed: () async {
+              final importedCards = await Navigator.push<List<Flashcard>>(
+                context,
+                MaterialPageRoute(builder: (_) => const ImportadorDeTarjetas()),
+              );
+              if (importedCards != null && importedCards.isNotEmpty) {
+                setState(() {
+                  widget.flashcards.addAll(importedCards);
+                });
+              }
+            },
+          ),
+          const SizedBox(height: 10),
+          FloatingActionButton.extended(
+            label: const Text('Agregar'),
+            icon: const Icon(Icons.add),
+            onPressed: () async {
+              final newCards = await Navigator.push<List<Flashcard>>(
+                context,
+                MaterialPageRoute(builder: (_) => const CreateCardScreen()),
+              );
+              if (newCards != null && newCards.isNotEmpty) {
+                setState(() {
+                  widget.flashcards.addAll(newCards);
+                });
+              }
+            },
+          ),
+          FloatingActionButton.extended(
+            label: const Text('Estadísticas'),
+            icon: const Icon(Icons.bar_chart),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => StatisticsScreen(stats: _studyStats),
+                ),
+              );
+            },
+          ),
+        ],
       ),
-    );
-  },
-),
-  ],
-),
-
-
-
-
     );
   }
 }
