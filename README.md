@@ -1,53 +1,49 @@
-# 📚 QuizApp
+# QuizApp
 
 ## 🎯 Objetivo del Proyecto
 
-Este proyecto tiene como finalidad desarrollar una plataforma interactiva de estudio mediante tarjetas de memoria (flashcards), similar a Quizlet. El objetivo principal es facilitar el aprendizaje activo y personalizado mediante herramientas digitales accesibles y efectivas para estudiantes de todas las edades.
+Este proyecto tiene como finalidad desarrollar una aplicación móvil interactiva de estudio mediante tarjetas de memoria (flashcards), inspirada en Quizlet. El objetivo principal es facilitar el aprendizaje activo y personalizado desde cualquier dispositivo Android.
 
 ## ⚙️ Funcionalidad del Proyecto
 
-- 📖 Crear, editar y eliminar sets de tarjetas de estudio.
-- 🗂️ Clasificar tarjetas por categorías o temas.
-- 🧠 Modo de estudio con revisión activa y modo de prueba (quiz).
-- 💾 Guardado de progreso del usuario (en desarrollo).
-- 📱 Responsive: adaptable para dispositivos móviles y escritorio.
+- Crear, editar y eliminar sets de tarjetas de estudio.
+- Clasificar tarjetas por temas o categorías.
+- Modo estudio y modo prueba tipo quiz.
+- Aplicación responsive y adaptable a distintos tamaños de pantalla.
 
-### 🧪 Flujo de trabajo y ramas
+### 🔄 Flujo de trabajo y ramas
 
-- 🔄 Los cambios recientes y nuevas características son empujados a la rama `main_prod`.
-- ✅ Una vez verificados y testeados, se integran a la rama `main` para producción estable.
+- Los cambios recientes se empujan a la rama `main_prod`.
+- Una vez verificados, se integran a la rama `main` como versión estable.
 
 ## 🚧 Mejoras Pendientes
 
-- 🎨 Mejorar la interfaz de usuario (UI) para una experiencia más intuitiva y moderna.
-- ✨ Agregar nuevas funcionalidades:
-  - 🏆 Puntajes gamificados como Duolingo.
-  - 🎵 Música o efectos sonoros para mejorar la experiencia de usuario.
-  - 📊 Estadísticas de progreso y rendimiento.
-  - 🔐 Registro e inicio de sesión con autenticación segura.
-  - ☁️ Sincronización en la nube para respaldo de tarjetas.
-- 🧪 Implementar tests automatizados y validaciones más robustas.
+- Mejorar la interfaz de usuario para una experiencia más fluida y atractiva.
+- Agregar nuevas funcionalidades:
+  - Sistema de puntaje/gamificación como Duolingo.
+  - Reproducción de música o efectos de sonido.
+  - Registro de progreso del usuario.
+- Explorar la integración de una base de datos para persistencia de datos.
+- Optimizar rendimiento en dispositivos de gama baja.
 
 ## 🛠️ Tecnologías Utilizadas
 
-- 🧩 **Frontend:** React (con posible uso de TailwindCSS o Material UI)
-- 🔧 **Backend:** Node.js con Express
-- 🗃️ **Base de Datos:** MongoDB
-- 🧬 **Control de versiones:** Git + GitHub
-- 🚀 **Despliegue:** Vercel / Render / Railway (a definir)
+- **Framework principal:** Flutter
+- **Lenguaje:** Dart
+- **Despliegue:** Compilación en formato APK para Android
 
 ## 🤝 Cómo Contribuir
 
-1. 🌀 Clona el repositorio:  
+1. Clona el repositorio:  
    `git clone https://github.com/tu-usuario/quizapp.git`
-2. 🌱 Crea una nueva rama:  
+2. Crea una nueva rama:  
    `git checkout -b feature/nueva-funcionalidad`
-3. 💡 Realiza tus cambios y haz commit:  
+3. Realiza tus cambios y haz commit:  
    `git commit -m "Agrega nueva funcionalidad"`
-4. 🚚 Empuja los cambios a `main_prod`:  
+4. Empuja los cambios a `main_prod`:  
    `git push origin feature/nueva-funcionalidad`
-5. 📬 Abre un Pull Request hacia `main_prod`
+5. Abre un Pull Request hacia `main_prod`
 
 ## 📌 Estado Actual
 
-Proyecto en desarrollo activo. El MVP funcional ya permite crear sets y estudiar tarjetas. Se están planificando mejoras enfocadas en usabilidad, gamificación y experiencia del usuario.
+La aplicación se encuentra en una versión inicial funcional. Se está trabajando activamente en mejorar su experiencia de uso y en agregar funcionalidades nuevas que la hagan más completa, intuitiva y entretenida.
