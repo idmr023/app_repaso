@@ -44,6 +44,16 @@ Este proyecto tiene como finalidad desarrollar una aplicación móvil interactiv
    `git push origin feature/nueva-funcionalidad`
 5. Abre un Pull Request hacia `main_prod`
 
+## 🚀 Flujo de trabajo recomendado
+
+Cada desarrollador trabaja en su entorno local y realiza cambios en ramas individuales. El flujo propuesto es el siguiente:
+
+1. **Rama `main`**  
+   Rama principal, estable y lista para generación de APKs.
+
+2. **Rama `main_prod`**  
+   Aquí se integran las funcionalidades una vez completas y probadas localmente. Se considera una versión previa a producción.
+
 ## 📌 Estado Actual
 
 La aplicación se encuentra en una versión inicial funcional. Se está trabajando activamente en mejorar su experiencia de uso y en agregar funcionalidades nuevas que la hagan más completa, intuitiva y entretenida.
